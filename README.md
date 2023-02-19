@@ -114,14 +114,7 @@ Related links
 Project maintainers
 --------------------
 
-Thank to all people who contrubuted to the code and maintain
-it. Especially thank to the maintainers who involved in the project
-actively in the past and helped to keep code actual:
-
-* Lei Gao @leikao
-* Bradley Falzon @bradleyfalzon
-
-New maitainers are welcome.
+See `AUTHORS` file.
 
 Alternatives
 -------------
