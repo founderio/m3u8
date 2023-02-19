@@ -85,26 +85,26 @@ const (
 //
 // Simple Media Playlist file sample:
 //
-//    #EXTM3U
-//    #EXT-X-VERSION:3
-//    #EXT-X-TARGETDURATION:5220
-//    #EXTINF:5219.2,
-//    http://media.example.com/entire.ts
-//    #EXT-X-ENDLIST
+//	#EXTM3U
+//	#EXT-X-VERSION:3
+//	#EXT-X-TARGETDURATION:5220
+//	#EXTINF:5219.2,
+//	http://media.example.com/entire.ts
+//	#EXT-X-ENDLIST
 //
 // Sample of Sliding Window Media Playlist, using HTTPS:
 //
-//    #EXTM3U
-//    #EXT-X-VERSION:3
-//    #EXT-X-TARGETDURATION:8
-//    #EXT-X-MEDIA-SEQUENCE:2680
+//	#EXTM3U
+//	#EXT-X-VERSION:3
+//	#EXT-X-TARGETDURATION:8
+//	#EXT-X-MEDIA-SEQUENCE:2680
 //
-//    #EXTINF:7.975,
-//    https://priv.example.com/fileSequence2680.ts
-//    #EXTINF:7.941,
-//    https://priv.example.com/fileSequence2681.ts
-//    #EXTINF:7.975,
-//    https://priv.example.com/fileSequence2682.ts
+//	#EXTINF:7.975,
+//	https://priv.example.com/fileSequence2680.ts
+//	#EXTINF:7.941,
+//	https://priv.example.com/fileSequence2681.ts
+//	#EXTINF:7.975,
+//	https://priv.example.com/fileSequence2682.ts
 type MediaPlaylist struct {
 	TargetDuration   float64
 	SeqNo            uint64 // EXT-X-MEDIA-SEQUENCE
@@ -136,19 +136,20 @@ type MediaPlaylist struct {
 // combines media playlists for multiple bitrates. URI lines in the
 // playlist identify media playlists. Sample of Master Playlist file:
 //
-//    #EXTM3U
-//    #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1280000
-//    http://example.com/low.m3u8
-//    #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-//    http://example.com/mid.m3u8
-//    #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=7680000
-//    http://example.com/hi.m3u8
-//    #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=65000,CODECS="mp4a.40.5"
-//    http://example.com/audio-only.m3u8
+//	#EXTM3U
+//	#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1280000
+//	http://example.com/low.m3u8
+//	#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
+//	http://example.com/mid.m3u8
+//	#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=7680000
+//	http://example.com/hi.m3u8
+//	#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=65000,CODECS="mp4a.40.5"
+//	http://example.com/audio-only.m3u8
 type MasterPlaylist struct {
 	Variants            []*Variant
-	Args                string // optional arguments placed after URI (URI?Args)
-	CypherVersion       string // non-standard tag for Widevine (see also WV struct)
+	Alternatives        []*Alternative // EXT-X-MEDIA
+	Args                string         // optional arguments placed after URI (URI?Args)
+	CypherVersion       string         // non-standard tag for Widevine (see also WV struct)
 	buf                 bytes.Buffer
 	ver                 uint8
 	independentSegments bool
@@ -181,8 +182,7 @@ type VariantParams struct {
 	Iframe           bool   // EXT-X-I-FRAME-STREAM-INF
 	VideoRange       string
 	HDCPLevel        string
-	FrameRate        float64        // EXT-X-STREAM-INF
-	Alternatives     []*Alternative // EXT-X-MEDIA
+	FrameRate        float64 // EXT-X-STREAM-INF
 }
 
 // Alternative structure represents EXT-X-MEDIA tag in variants.
@@ -327,7 +327,6 @@ type decodingState struct {
 	duration           float64
 	title              string
 	variant            *Variant
-	alternatives       []*Alternative
 	xkey               *Key
 	xmap               *Map
 	scte               *SCTE

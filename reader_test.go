@@ -1,11 +1,11 @@
 /*
- Playlist parsing tests.
+Playlist parsing tests.
 
- Copyright 2013-2019 The Project Developers.
- See the AUTHORS and LICENSE files at the top-level directory of this distribution
- and at https://github.com/grafov/m3u8/
+Copyright 2013-2019 The Project Developers.
+See the AUTHORS and LICENSE files at the top-level directory of this distribution
+and at https://github.com/grafov/m3u8/
 
- ॐ तारे तुत्तारे तुरे स्व
+ॐ तारे तुत्तारे तुरे स्व
 */
 package m3u8
 
@@ -85,21 +85,9 @@ func TestDecodeMasterPlaylistWithAlternatives(t *testing.T) {
 		t.Fatal("not all variants in master playlist parsed")
 	}
 	// TODO check other values
-	for i, v := range p.Variants {
-		if i == 0 && len(v.Alternatives) != 3 {
-			t.Fatalf("not all alternatives from #EXT-X-MEDIA parsed (has %d but should be 3", len(v.Alternatives))
-		}
-		if i == 1 && len(v.Alternatives) != 3 {
-			t.Fatalf("not all alternatives from #EXT-X-MEDIA parsed (has %d but should be 3", len(v.Alternatives))
-		}
-		if i == 2 && len(v.Alternatives) != 3 {
-			t.Fatalf("not all alternatives from #EXT-X-MEDIA parsed (has %d but should be 3", len(v.Alternatives))
-		}
-		if i == 3 && len(v.Alternatives) > 0 {
-			t.Fatal("should not be alternatives for this variant")
-		}
+	if len(p.Alternatives) != 9 {
+		t.Fatalf("not all alternatives from #EXT-X-MEDIA parsed (has %d but should be 9", len(p.Alternatives))
 	}
-	// fmt.Println(p.Encode().String())
 }
 
 func TestDecodeMasterPlaylistWithClosedCaptionEqNone(t *testing.T) {
