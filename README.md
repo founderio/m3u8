@@ -1,5 +1,5 @@
 <!--*- mode:markdown -*-->
-M3U8 [![](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go#video)
+M3U8
 ====
 
 This is the most complete opensource library for parsing and generating of M3U8 playlists
@@ -24,31 +24,23 @@ See the list of the library authors at [AUTHORS](AUTHORS) file.
 Project status
 ---------------
 
-I moved away from videostreaming years ago and directly not used this
-code in my projects now. Hence the project mostly abandoned. Anyway I
-interested in keeping the code as useful as possible. I'll keep the
-eye on the issues when I have the time. Time is the biggest issue :|
-
-1. Any patches are welcome especially bugfixes.
-1. If you want to maintain the project open the issue or directly contact me.
-1. If you have alternatives (including the forks of this project) that
-   you prefer to maintain by self, drop a link for including to this
-   readme.
+This is a fork of <https://github.com/grafov/m3u8> maintained for my own personal needs.
+Pull Requests are welcome, but issues not pertaining to my own needs may be ignored.
 
 
 Install
 -------
 
-	go get github.com/grafov/m3u8
+	go get github.com/founderio/m3u8
 
-or get releases from https://github.com/grafov/m3u8/releases
+or get releases from https://github.com/founderio/m3u8/releases
 
-Documentation [![GoDoc](https://godoc.org/github.com/grafov/m3u8?status.svg)](https://pkg.go.dev/github.com/grafov/m3u8)
+Documentation [![GoDoc](https://godoc.org/github.com/founderio/m3u8?status.svg)](https://pkg.go.dev/github.com/founderio/m3u8)
 -------------
 
 Package online documentation (examples included) available at:
 
-* http://pkg.go.dev/github.com/grafov/m3u8
+* <http://pkg.go.dev/github.com/founderio/m3u8>
 
 Supported by the HLS protocol tags and their library support explained in [M3U8 cheatsheet](M3U8.md).
 
@@ -118,27 +110,6 @@ Related links
 * http://en.wikipedia.org/wiki/M3U
 * http://en.wikipedia.org/wiki/HTTP_Live_Streaming
 * http://gonze.com/playlists/playlist-format-survey.html
-
-Library usage
--------------
-
-This library was successfully used in streaming software developed for company where I worked several
-years ago. It was tested then in generating of VOD and Live streams and parsing of Widevine Live streams.
-Also the library used in opensource software so you may look at these apps for usage examples:
-
-* [HLS downloader](https://github.com/kz26/gohls)
-* [Another HLS downloader](https://github.com/Makombo/hlsdownloader)
-* [HLS utils](https://github.com/archsh/hls-utils)
-* [M3U8 reader](https://github.com/jeongmin/m3u8-reader)
-
-Project status [![Go Report Card](https://goreportcard.com/badge/grafov/m3u8)](https://goreportcard.com/report/grafov/m3u8)
---------------
-
-[![Build Status](https://travis-ci.org/grafov/m3u8.png?branch=master)](https://travis-ci.org/grafov/m3u8) [![Build Status](https://cloud.drone.io/api/badges/grafov/m3u8/status.svg)](https://cloud.drone.io/grafov/m3u8) [![Coverage Status](https://coveralls.io/repos/github/grafov/m3u8/badge.svg?branch=master)](https://coveralls.io/github/grafov/m3u8?branch=master)
-
-[![DeepSource](https://static.deepsource.io/deepsource-badge-light.svg)](https://deepsource.io/gh/grafov/m3u8/?ref=repository-badge)
-
-Code coverage: https://gocover.io/github.com/grafov/m3u8
 
 Project maintainers
 --------------------
